@@ -1,0 +1,1042 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   EDUcare
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        @keyframes float {
+            0% {
+                transform: translatey(0px);
+            }
+            50% {
+                transform: translatey(-10px);
+            }
+            100% {
+                transform: translatey(0px);
+            }
+        }
+        .floating {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .fade-in {
+            animation: fadeIn 6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .bg-cream {
+            background-color: #e6f8ff;
+        }
+
+        .testimonial {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+    0% {
+     transform: translateY(50px);
+     opacity: 0;
+    }
+    100% {
+     transform: translateY(0);
+     opacity: 1;
+    }
+   }
+   .animate-slideIn {
+    animation: slideIn 1s ease-out forwards;
+   }
+   .icon-square {
+            position: absolute;
+            transition: all 1s ease-in-out;
+        }
+        .random-move {
+            position: absolute;
+            transition: transform 1s ease;
+        }
+  </style>
+ 
+ </head>
+ <body class="bg-blue-50">
+  <header class="flex justify-between items-center p-4 bg-white shadow-md">
+   <div class="text-2xl font-bold text-blue-600">
+    EDUcare
+   </div>
+   <nav class="hidden md:flex space-x-4">
+    <a class="text-gray-800 hover:text-blue-500" href="#">
+     Home
+    </a>
+    <a class="text-gray-800 hover:text-blue-500" href="#">
+     For Business
+    </a>
+    <a class="text-gray-800 hover:text-blue-500" href="#" onclick="navigateToAboutUs()">
+     About us
+    </a>
+    <a class="text-gray-800 hover:text-blue-500" href="#" onclick="navigateToContactUs()">
+     Contact us
+    </a>
+    <a class="text-gray-800 hover:text-blue-500" href="#">
+     عربي
+    </a>
+    <img alt="Country flag" class="inline-block" src="https://placehold.co/20x20"/>
+   </nav>
+   <button class="bg-green-500 text-white px-4 py-2 rounded-full" onclick="navigateToSignUp()">
+    Get Started
+   </button>
+  </header>
+  <main class="flex flex-col md:flex-row items-center justify-between p-8">
+   <div class="md:w-1/2 space-y-4 fade-in">
+    <h1 class="text-4xl font-bold text-blue-600">
+     Making
+     <span class="text-yellow-500">
+      Learning
+     </span>
+     Easier
+    </h1>
+    <p class="text-gray-700">
+     No more stress, With personalized strategies and instant support, success is easier than ever.
+    </p>
+    <div class="space-x-4">
+     <button class="bg-white border border-gray-300 text-gray-800 px-4 py-2 rounded-full" onclick="navigateToAboutUs()">
+      About us
+     </button>
+     <button class="bg-yellow-500 text-white px-4 py-2 rounded-full" onclick="navigateToChatbot()">
+      Try AI
+     </button>
+    </div>
+   </div>
+   <div class="relative md:w-1/2 mt-8 md:mt-0 slide-in">
+    <div class="absolute top-0 left-0 bg-white p-2 rounded-lg shadow-lg">
+     <p class="text-blue-500 font-bold">
+      150+ Classrooms
+     </p>
+     <p class="text-gray-600">
+      Conducted Per Week
+     </p>
+    </div>
+    <img alt="Smiling woman holding books" class="rounded-lg shadow-lg" src="../assets/Images/Two college students with backpacks standing side by side each holding books _ Premium AI-generated image.jpg"/>
+   </div>
+  </main>
+  <section class="p-8 bg-white mt-8" id="about-us">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center fade-in">
+     <h2 class="text-3xl font-bold text-blue-600">
+      About Us
+     </h2>
+     <p class="text-gray-700 mt-4">
+      We are dedicated to making learning easier with personalized strategies and instant support. Our mission is to help you succeed with less stress and more efficiency.
+     </p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div class="flex flex-col items-center fade-in">
+      <img alt="Team collaboration" class="rounded-lg shadow-lg" src="../assets/Images/24 Journal Writing Prompts for Young Creative Writers.jpg"/>
+      <h3 class="text-xl font-bold text-blue-600 mt-4">
+       Our Mission
+      </h3>
+      <p class="text-gray-700 mt-2 text-center">
+       Our mission is to provide personalized learning strategies and instant support to help you achieve your goals with less stress and more efficiency.
+      </p>
+     </div>
+     <div class="flex flex-col items-center fade-in">
+      <img alt="Happy students" class="rounded-lg shadow-lg" src="../assets/Images/happy.jpg"/>
+      <h3 class="text-xl font-bold text-blue-600 mt-4">
+       Our Vision
+      </h3>
+      <p class="text-gray-700 mt-2 text-center">
+       We envision a world where learning is accessible, personalized, and enjoyable for everyone. We strive to make education a stress-free and successful journey.
+      </p>
+     </div>
+    </div>
+    <div class="mt-12 flex flex-col items-center fade-in">
+     <img alt="Our team" class="rounded-lg shadow-lg" src="https://placehold.co/800x400?text=Our+team"/>
+     <h3 class="text-xl font-bold text-blue-600 mt-4">
+      Meet Our Team
+     </h3>
+     <p class="text-gray-700 mt-2 text-center">
+      Our team is composed of dedicated professionals who are passionate about education and committed to helping you succeed.
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- first features -->
+  <div class="flex flex-col md:flex-row items-center justify-center min-h-screen p-6">
+    <div class="relative w-full md:w-1/2 flex justify-center">
+     <div class="absolute w-80 h-80 bg-pink-100 rounded-full flex items-center justify-center">
+      <img alt="Yellow monster character with one eye, holding a pointer stick" class="w-40 h-40" src="../assets/Images/training.png"/>
+     </div>
+     <div class="absolute w-80 h-80">
+      <div class="icon-square w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Group Maker icon" class="w-8 h-8" src="../assets/Images/partners.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-blue-400 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Random icon" class="w-8 h-8" src="../assets/Images/rising.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Timer icon" class="w-8 h-8" src="../assets/Images/quiz (1).png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-green-400 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="List icon" class="w-8 h-8" src="../assets/Images/exam.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-blue-300 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Cloud icon" class="w-8 h-8" src="../assets/Images/virtual.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-yellow-400 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Sun icon" class="w-8 h-8" src="../assets/Images/study.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Music icon" class="w-8 h-8" src="../assets/Images/deadline.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-purple-300 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Chart icon" class="w-8 h-8" src="../assets/Images/shopping-online.png"/>
+      </div>
+     </div>
+    </div>
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 md:pl-12 text-center md:text-left">
+     <div class="flex items-center justify-center md:justify-start mb-4">
+      <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+       <img alt="Paintbrush icon" class="w-6 h-6" src="../assets/Images/teamwork.png"/>
+      </div>
+     </div>
+     <h1 class="text-3xl font-bold text-gray-800 mb-4" style="font-family: 'Nunito', sans-serif;">
+        What Makes Educare Different?
+     </h1>
+     <p class="text-lg text-gray-600" style="font-family: 'Open Sans', sans-serif;">
+        <ul>
+          <li>🧠 Personalized Learning AI-generated content based on each student’s needs and level.</li>
+           <li> 🤖 AI Companion A friendly assistant to help students stay motivated and track achievements.</li>
+            <li>📚 Smart Classrooms Classwork, assignments, and quizzes tailored for each learner’s pace.</li>
+            <li>🌱 Support for Special Needs Tools designed with accessibility in mind—ADHD, autism, dyslexia and deaf.</li>
+        </ul>
+     </p>
+    </div>
+   </div>
+   <!-- third features -->
+    <div class="bg-white flex items-center justify-center min-h-screen">
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 p-4">
+            <div class="relative bg-blue-100 rounded-full p-8 flex items-center justify-center" style="width: 300px; height: 300px;">
+             <div class="random-move" >
+              <img alt="Profile picture of Marty" class="rounded-full border-2 border-white" height="50" src="../assets/Images/chat.png" width="50"/>
+             </div>
+             <div class="random-move" >
+              <img alt="Decorative image of a burger and drink" class="rounded-full border-2 border-white" height="50" src="../assets/Images/comment.png" width="50"/>
+             </div>
+             <div class="random-move" >
+              <img alt="Decorative image of a dog" class="rounded-full border-2 border-white" height="50" src="../assets/Images/group.png" width="50"/>
+             </div>
+             <div class="space-y-4">
+              <div class="bg-white p-4 rounded-lg shadow-md relative">
+               <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rotate-45">
+               </div>
+               <p class="text-blue-600 font-bold">
+                Marty • Alberto's Parent
+               </p>
+               <p>
+                Berto is about to lose his front tooth 🦷. It'll probably come out today in class!
+               </p>
+               <p class="text-gray-400 text-sm">
+                Translated from Spanish
+               </p>
+              </div>
+              <!-- <div class="bg-blue-500 text-white p-4 rounded-lg shadow-md relative">
+               <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rotate-45">
+               </div>
+               <p>
+                Gemma rocked her presentation today!
+               </p>
+               <p class="text-sm">
+                Read 10:20AM
+               </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-md relative">
+               <div class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rotate-45">
+               </div>
+               <p class="text-blue-600 font-bold">
+                Linda • Gemma's Parent
+               </p>
+               <p>
+                We're so proud! She practiced a ton.
+               </p>
+              </div> -->
+             </div>
+            </div>
+            <div class="text-center md:text-left">
+             <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+              <div class="bg-blue-500 text-white p-2 rounded-full">
+               <i class="fas fa-comments">
+               </i>
+              </div>
+              <h2 class="text-2xl font-bold">
+               Stay connected—instantly
+              </h2>
+             </div>
+             <p class="text-gray-700">
+              <!-- Messages make it easy to communicate with teachers, families and staff anytime, anywhere—and are automatically translated into more than 35 languages -->
+              Built-in chat and updates make collaboration between teachers and students easy, fast, and accessible.
+            </p>
+             <div class="flex items-center justify-center md:justify-start mt-4">
+              <i class="fas fa-globe text-blue-500">
+              </i>
+             </div>
+            </div>
+           </div>
+    </div>
+  <!-- Our features -->
+  <div class="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center">
+    <div class="lg:w-1/2 mb-8 lg:mb-0 animate-slideIn">
+     <div class="flex items-center mb-4">
+      <div class="bg-orange-500 text-white rounded-full p-4">
+       <i class="fas fa-photo-video fa-2x">
+       </i>
+      </div>
+     </div>
+     <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Why Choose Us?
+     </h2>
+     <p class="text-lg text-gray-700">
+ 🎓 Educare is more than just an app — it’s your personal learning companion. From helping you stay organized with assignments to giving you quick access to lessons and teacher support, Educare is built to make your education smoother and more meaningful.
+      <span class="text-yellow-500">
+       ✨
+      </span>
+     </p>
+    </div>
+    <div class="lg:w-1/2 flex flex-col items-center lg:items-end relative">
+     <div class="absolute -top-8 -right-8 bg-yellow-100 rounded-full w-96 h-96 animate-slideIn" style="animation-delay: 0.5s;">
+     </div>
+     <div class="relative mb-4 transform rotate-3 z-10 animate-slideIn" style="animation-delay: 1s;">
+      <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+       <div class="flex items-center mb-2">
+        <img alt="Teacher's profile picture" class="rounded-full w-10 h-10 mr-2" src="../assets/Images/istockphoto-472977300-612x612.jpg"/>
+        <div>
+         <p class="font-bold text-gray-900">
+          Ms. Jessica Zhou
+         </p>
+         <p class="text-gray-600">
+          2nd Grade
+         </p>
+        </div>
+       </div>
+       <img alt="Classroom activity" class="rounded-lg mb-2" src="../assets/Images/istockphoto-472977300-612x612.jpg"/>
+       <p class="text-gray-700">
+        Learning about the science of sound!
+       </p>
+       <div class="flex items-center text-gray-500 text-sm mt-2">
+        <i class="fas fa-heart mr-1">
+        </i>
+        8
+        <i class="fas fa-comment-dots ml-4 mr-1">
+        </i>
+        6
+        <i class="fas fa-eye ml-4 mr-1">
+        </i>
+        23
+       </div>
+      </div>
+     </div>
+     <div class="relative mb-4 transform -rotate-3 -mt-20 z-0 animate-slideIn" style="animation-delay: 1.5s;">
+      <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+       <div class="flex items-center mb-2">
+        <img alt="Teacher's profile picture" class="rounded-full w-10 h-10 mr-2" src="../assets/Images/AI women.jpg"/>
+        <div>
+         <p class="font-bold text-gray-900">
+          Mr. Griffin
+         </p>
+         <p class="text-gray-600">
+          6th Grade
+         </p>
+        </div>
+       </div>
+       <img alt="Classroom activity" class="rounded-lg mb-2" src="../assets/Images/group-people-holding-hand-together-600nw-604504784.webp"/>
+       <p class="text-gray-700">
+        Today's lesson was
+        <span class="text-yellow-500">
+         electric
+        </span>
+       </p>
+       <div class="flex items-center text-gray-500 text-sm mt-2">
+        <i class="fas fa-heart mr-1">
+        </i>
+        18
+        <i class="fas fa-comment-dots ml-4 mr-1">
+        </i>
+        31
+        <i class="fas fa-eye ml-4 mr-1">
+        </i>
+        31
+       </div>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-4 flex items-center animate-slideIn" style="animation-delay: 2s;">
+      <img alt="School logo" class="rounded-full w-10 h-10 mr-2" src="../assets/Images/24 Journal Writing Prompts for Young Creative Writers.jpg"/>
+      <div>
+       <p class="font-bold text-gray-900">
+        Eagles Elementary
+       </p>
+       <p class="text-gray-600">
+        + 47 more
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+
+
+   <!-- second section for oure features -->
+    <div  class="bg-white text-gray-800">
+   <div class="flex flex-col md:flex-row items-center justify-center min-h-screen p-6">
+    <div class="relative flex flex-col items-center md:items-start md:w-1/2 space-y-6">
+     <div class="absolute -top-32 -left-32 w-[20rem] h-[40rem] bg-purple-200 rounded-full flex items-center justify-center">
+     </div>
+     <div class="relative bg-white shadow-lg rounded-lg p-4 w-72 transform rotate-6 z-10 floating">
+      <div class="flex items-center justify-between">
+       <div class="text-center">
+        <p class="text-sm text-gray-500">
+         9
+        </p>
+        <p class="text-lg font-bold text-gray-900">
+         Sep
+        </p>
+       </div>
+       <div class="ml-4">
+        <p class="text-sm text-gray-500">
+         MONDAY
+        </p>
+        <h3 class="text-lg font-bold text-gray-900">
+         BINGO for Books
+        </h3>
+        <p class="text-sm text-gray-700">
+         3:00pm–4:00pm
+        </p>
+       </div>
+      </div>
+      <div class="flex items-center justify-between mt-4">
+       <div class="text-center">
+        <p class="text-sm text-gray-500">
+         12
+        </p>
+        <p class="text-lg font-bold text-gray-900">
+         Oct
+        </p>
+       </div>
+       <div class="ml-4">
+        <p class="text-sm text-gray-500">
+         WEDNESDAY
+        </p>
+        <h3 class="text-lg font-bold text-gray-900">
+         Aquarium Field Trip
+        </h3>
+        <p class="text-sm text-gray-700">
+         4:00pm–6:00pm
+        </p>
+       </div>
+      </div>
+      <div class="flex items-center justify-between mt-4">
+       <div class="text-center">
+        <p class="text-sm text-gray-500">
+         23
+        </p>
+        <p class="text-lg font-bold text-gray-900">
+         Nov
+        </p>
+       </div>
+       <div class="ml-4">
+        <p class="text-sm text-gray-500">
+         FRIDAY
+        </p>
+        <h3 class="text-lg font-bold text-gray-900">
+         Healthy Living Fair
+        </h3>
+        <p class="text-sm text-gray-700">
+         9:00am–12:00pm
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="relative bg-white shadow-lg rounded-lg p-4 w-72 transform -rotate-6 z-20 floating">
+      <p class="text-sm text-gray-500">
+       FRIDAY, NOVEMBER 16
+      </p>
+      <h3 class="text-xl font-bold text-gray-900">
+       Healthy Living Fair
+      </h3>
+      <p class="text-sm text-gray-700">
+       9am – 12pm
+      </p>
+      <div class="flex items-center mt-4">
+       <img alt="Profile picture of Mrs. Unicorn" class="w-10 h-10 rounded-full mr-3" src="https://placehold.co/40x40"/>
+       <div>
+        <p class="text-sm font-bold text-gray-900">
+         Mrs. Unicorn
+        </p>
+        <p class="text-sm text-orange-500">
+         2nd Grade
+        </p>
+        <p class="text-sm text-gray-700 mt-1">
+         Come for fun fitness classes, healthy living sessions, a jump rope marathon, and a dance party. Hope to see you there!
+        </p>
+       </div>
+      </div>
+      <div class="flex items-center mt-4">
+       <img alt="Profile picture of Sarah Jackson" class="w-10 h-10 rounded-full mr-3" src="https://placehold.co/40x40"/>
+       <div>
+        <p class="text-sm font-bold text-gray-900">
+         Sarah Jackson
+        </p>
+        <p class="text-sm text-purple-500">
+         Jamie's Parent
+        </p>
+        <p class="text-sm text-gray-700 mt-1">
+         I'm helping out with the dance party and we will have DDR
+         <i class="fas fa-gamepad text-red-500">
+         </i>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="relative bg-white shadow-lg rounded-lg p-4 w-72 transform rotate-6 floating">
+      <p class="text-sm text-gray-500">
+       THURSDAY, SEPTEMBER 20
+      </p>
+      <h3 class="text-xl font-bold text-gray-900">
+       BINGO for Books
+      </h3>
+      <p class="text-sm text-gray-700">
+       11am – 2pm
+      </p>
+     </div>
+    </div>
+    <div class="flex flex-col items-center md:items-start md:w-1/2 mt-10 md:mt-0 md:ml-10">
+     <div class="flex items-center space-x-4">
+      <div class="bg-purple-500 text-white rounded-full p-4">
+       <i class="fas fa-calendar-alt text-2xl">
+       </i>
+      </div>
+      <div>
+       <h2 class="text-2xl font-bold text-gray-900">
+        Keep everyone up-to-date
+       </h2>
+       <p class="text-gray-700 mt-2">
+        Adding Events to the calendar is easy and keeps everyone in the loop with automatic reminders
+        <i class="fas fa-calendar-check text-blue-500">
+        </i>
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+</div>
+
+<!-- Store -->
+<div class="flex flex-col md:flex-row items-center justify-center min-h-screen p-6">
+    <div class="relative w-full md:w-1/2 flex justify-center">
+     <div class="absolute w-80 h-80 bg-orange-100 rounded-full flex items-center justify-center">
+      <img alt="Yellow monster character with one eye, holding a pointer stick" class="w-40 h-40" src="../assets/Images/add-to-cart.png"/>
+     </div>
+     <div class="absolute w-80 h-80">
+      <div class="icon-square w-16 h-16 bg-grey-500 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Group Maker icon" class="w-8 h-8" src="../assets/Images/partners.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-blue-400 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Random icon" class="w-8 h-8" src="../assets/Images/rising.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-blue-200 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Timer icon" class="w-8 h-8" src="../assets/Images/webinar.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-green-300 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="List icon" class="w-8 h-8" src="../assets/Images/ebook.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-pink-200 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Cloud icon" class="w-8 h-8" src="../assets/Images/virtual.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-yellow-300 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Sun icon" class="w-8 h-8" src="../assets/Images/study.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-purple-200 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Music icon" class="w-8 h-8" src="../assets/Images/online-education.png"/>
+      </div>
+      <div class="icon-square w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center shadow-lg">
+       <img alt="Chart icon" class="w-8 h-8" src="../assets/Images/shopping-online.png"/>
+      </div>
+     </div>
+    </div>
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 md:pl-12 text-center md:text-left">
+     <div class="flex items-center justify-center md:justify-start mb-4">
+      <div class="w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center">
+       <img alt="Paintbrush icon" class="w-6 h-6" src="../assets/Images/app-store (1).png"/>
+      </div>
+     </div>
+     <h1 class="text-3xl font-bold text-gray-800 mb-4" style="font-family: 'Nunito', sans-serif;">
+        Diverse Classroom Courses
+     </h1>
+     <p class="text-lg text-gray-600" style="font-family: 'Open Sans', sans-serif;">
+        More than a classroom.
+     </p>
+    </div>
+   </div>
+  <!-- studens opinions -->
+   <div class="bg-white text-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="text-center fade-in">
+         <p class="text-gray-500">
+          -- Real Experiences
+         </p>
+         <h2 class="text-3xl font-bold text-gray-900 mt-2">
+          What do students say about EDUcare?
+         </h2>
+         <p class="text-gray-500 mt-2">
+            <ul>
+                <li>More Than A Classroom - Any Time Anywhere</li>
+                <li>"No Stress Just Success With EDUCare"</li>
+            </ul>
+            
+           
+         </p>
+        </div>
+        <div class="mt-8 flex justify-center items-center space-x-4">
+         <button class="bg-green-200 p-2 rounded-full shadow-md hover:bg-green-300 transition duration-300" id="prevBtn">
+          <i class="fas fa-arrow-left text-gray-700">
+          </i>
+         </button>
+         <div class="flex overflow-hidden w-full md:w-2/3" id="testimonialContainer">
+          <div class="testimonial bg-green-50 p-6 rounded-lg shadow-md w-full flex-shrink-0 fade-in">
+           <div class="flex items-center space-x-4">
+            <img alt="Profile picture of Ramez Joseph" class="w-12 h-12 rounded-full" src="../assets/Images/wonan.jpg"/>
+            <div>
+             <h3 class="font-bold text-gray-900">
+              Ramez Joseph
+             </h3>
+             <p class="text-gray-500">
+              @GUC
+             </p>
+            </div>
+           </div>
+           <p class="mt-4 text-gray-700">
+            “Educare helped me stay organized with my assignments.” “I feel more confident studying because everything I need is in one place".
+           </p>
+          </div>
+          <div class="testimonial bg-green-50 p-6 rounded-lg shadow-md w-full flex-shrink-0 fade-in">
+           <div class="flex items-center space-x-4">
+            <img alt="Profile picture of Mohamed Hamed" class="w-12 h-12 rounded-full" src="../assets/Images/team .jpg"/>
+            <div>
+             <h3 class="font-bold text-gray-900">
+              Mohamed Hamed
+             </h3>
+             <p class="text-gray-500">
+              @MIU
+             </p>
+            </div>
+           </div>
+           <p class="mt-4 text-gray-700">
+            "My favorite part is getting instant updates from my teacher. No more guessing what to do."
+           </p>
+          </div>
+          <div class="testimonial bg-green-50 p-6 rounded-lg shadow-md w-full flex-shrink-0 fade-in">
+           <div class="flex items-center space-x-4">
+            <img alt="Profile picture of Seif Diaa" class="w-12 h-12 rounded-full" src="../assets/Images/WhatsApp Image 2024-11-15 at 17.54.02_d42ff504.jpg"/>
+            <div>
+             <h3 class="font-bold text-gray-900">
+              Seif Diaa
+             </h3>
+             <p class="text-gray-500">
+              @MIU
+             </p>
+            </div>
+           </div>
+           <p class="mt-4 text-gray-700">
+           " It helps me be more independent. I don’t need to rely on others to know what’s going on at school."
+           </p>
+          </div>
+         </div>
+         <button class="bg-green-200 p-2 rounded-full shadow-md hover:bg-green-300 transition duration-300" id="nextBtn">
+          <i class="fas fa-arrow-right text-gray-700">
+          </i>
+         </button>
+        </div>
+       </div>
+</div>
+<!-- footer1 -->
+<footer class="bg-cream p-10"> 
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center fade-in">
+     <h2 class="text-3xl font-bold text-blue-600">
+      Contact Us
+     </h2>
+     <p class="text-gray-700 mt-4">
+      We'd love to hear from you! Whether you have a question about our services, need assistance, or just want to talk, we are here for you.
+     </p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div class="flex flex-col items-center fade-in">
+      <i class="fas fa-phone-alt text-4xl text-blue-600">
+      </i>
+      <h3 class="text-xl font-bold text-blue-600 mt-4">
+       Call Us
+      </h3>
+      <p class="text-gray-700 mt-2 text-center">
+       +1 234 567 890
+      </p>
+     </div>
+     <div class="flex flex-col items-center fade-in">
+      <i class="fas fa-envelope text-4xl text-blue-600">
+      </i>
+      <h3 class="text-xl font-bold text-blue-600 mt-4">
+       Email Us
+      </h3>
+      <p class="text-gray-700 mt-2 text-center">
+       support@educare.com
+      </p>
+     </div>
+    </div>
+    <div class="mt-12 flex flex-col items-center fade-in">
+     <i class="fas fa-map-marker-alt text-4xl text-blue-600">
+     </i>
+     <h3 class="text-xl font-bold text-blue-600 mt-4">
+      Visit Us
+     </h3>
+     <p class="text-gray-700 mt-2 text-center">
+      124 Educare Street, Learning City, Edu 25112002
+     </p>
+    </div>
+<div class="flex space-x-4 mt-6 md:mt-0">
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-linkedin">
+       </i>
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-facebook">
+       </i>
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-instagram">
+       </i>
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-tiktok">
+       </i>
+      </a>
+     </div>
+    </div>
+    <div class="text-center mt-10 text-gray-600">
+     © 2025 Educare. All Rights Reserved. Developed by Educare.
+    </div>
+   </div>
+  </footer> 
+   <!-- Floating Avatar bottom right -->
+   <div class="fixed bottom-4 right-4 floating">
+    <a href="./chatbot.html" onclick="openModal()">
+     <img alt="AI icon" class="w-20 h-20 rounded-full" src="../assets/Images/WhatsApp Image 2024-11-15 at 19.39.33_b2a01f1c.jpg"/>
+    </a>
+   </div>
+  
+   <!-- Modal -->
+   <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="chatbotModal">
+    <div class="bg-white p-6 rounded-lg max-w-md w-full">
+     <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold">
+       Chatbot
+      </h2>
+      <button class="text-gray-600" onclick="closeModal()">
+       <i class="fas fa-times">
+       </i>
+      </button>
+     </div>
+     <div class="bg-gray-100 p-4 rounded-lg h-64 overflow-y-auto">
+      <div class="mb-4">
+       <div class="bg-green-200 p-2 rounded-lg inline-block">
+        <p>
+         Hello! How can I help you today?
+        </p>
+       </div>
+      </div>
+      <div class="mb-4 text-right">
+       <div class="bg-blue-200 p-2 rounded-lg inline-block">
+        <p>
+         I need some information about your services.
+        </p>
+       </div>
+      </div>
+      <!-- Add more chat messages here -->
+     </div>
+     <div class="mt-4">
+      <input class="w-full p-2 border rounded-lg" placeholder="Type a message..." type="text"/>
+     </div>
+    </div>
+  
+  <!-- footer -->
+  <!-- <footer class="bg-cream p-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
+     <div class="mb-6 md:mb-0">
+      <h1 class="text-4xl font-bold mb-4">
+       EDUcare
+      </h1>
+      <div class="flex items-center mb-2">
+       <i class="fas fa-phone-alt text-blue-500 mr-2">
+       </i>
+       <span>
+        +20 1090411557
+       </span>
+      </div>
+      <div class="flex items-center mb-2">
+       <i class="fas fa-envelope text-blue-500 mr-2">
+       </i>
+       <span>
+        info@educare@gmail.com
+       </span>
+      </div>
+      <div class="flex items-center">
+       <i class="fas fa-map-marker-alt text-blue-500 mr-2">
+       </i>
+       <span>
+        Sultan Hussein Kamel Palace, 21 El Khartoum St, El-Montaza, Heliopolis, Cairo Governorate
+       </span>
+      </div>
+     </div>
+     <div class="flex flex-col md:flex-row md:space-x-16">
+      <div class="mb-6 md:mb-0">
+       <h2 class="font-bold mb-2">
+        Company
+       </h2>
+       <ul>
+        <li class="mb-1">
+         <a class="text-gray-700" href="#">
+          About
+         </a>
+        </li>
+        <li class="mb-1">
+         <a class="text-gray-700" href="#">
+          For Business
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-700" href="#">
+          Contact
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="mb-6 md:mb-0">
+       <h2 class="font-bold mb-2">
+        Product
+       </h2>
+       <ul>
+        <li class="mb-1">
+         <a class="text-gray-700" href="#">
+          Browse Tutors
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-700" href="#">
+          Ruu Ai
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div>
+       <h2 class="font-bold mb-2">
+        Legal
+       </h2>
+       <ul>
+        <li class="mb-1">
+         <a class="text-gray-700" href="#">
+          Terms &amp; Conditions
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-700" href="#">
+          Privacy Policy
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="flex space-x-4 mt-6 md:mt-0">
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-linkedin">
+       </i>
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-facebook">
+       </i>
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-instagram">
+       </i>
+      </a>
+      <a class="text-gray-700 hover:text-blue-500" href="#">
+       <i class="fab fa-tiktok">
+       </i>
+      </a>
+     </div>
+    </div>
+    <div class="text-center mt-10 text-gray-600">
+     © 2023 Tutoruu. All Rights Reserved. Developed by Tutoruu.
+    </div>
+   </footer>
+   <div class="fixed bottom-4 right-4 floating">
+    <a href="#" onclick="openModal()">
+     <img alt="AI icon" class="w-20 h-20 rounded-full" src="../assets/Images/WhatsApp Image 2024-11-15 at 19.39.33_b2a01f1c.jpg"/>
+    </a>
+   </div> -->
+   <!-- Modal -->
+   <!-- <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="chatbotModal">
+    <div class="bg-white p-6 rounded-lg max-w-md w-full">
+     <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold">
+       Chatbot
+      </h2>
+      <button class="text-gray-600" onclick="closeModal()">
+       <i class="fas fa-times">
+       </i>
+      </button>
+     </div>
+     <div class="bg-gray-100 p-4 rounded-lg h-64 overflow-y-auto">
+      <div class="mb-4">
+       <div class="bg-green-200 p-2 rounded-lg inline-block">
+        <p>
+         Hello! How can I help you today?
+        </p>
+       </div>
+      </div>
+      <div class="mb-4 text-right">
+       <div class="bg-blue-200 p-2 rounded-lg inline-block">
+        <p>
+         I need some information about your services.
+        </p>
+       </div>
+      </div> -->
+      <!-- Add more chat messages here -->
+     <!-- </div>
+     <div class="mt-4">
+      <input class="w-full p-2 border rounded-lg" placeholder="Type a message..." type="text"/>
+     </div>
+    </div> -->
+   <!-- </div> -->
+   <script>
+    function navigateToSignUp() {
+             window.location.href = 'signup.html'; // Replace with the actual URL of the Sign Up page
+         }
+ 
+         function navigateToChatbot() {
+             window.location.href = 'chatbot.html'; // Replace with the actual URL of the Chatbot page
+         }
+ 
+         function navigateToAboutUs() {
+             document.getElementById('about-us').scrollIntoView({ behavior: 'smooth' });
+         }
+ 
+         function navigateToContactUs() {
+             document.getElementById('contact-us').scrollIntoView({ behavior: 'smooth' });
+         }
+ 
+         function navigateToWhatsApp() {
+             window.location.href = 'https://wa.me/1234567890'; // Replace with the actual WhatsApp number
+         }
+   </script>
+<script>
+    const testimonials = document.querySelectorAll('.testimonial');
+         const prevBtn = document.getElementById('prevBtn');
+         const nextBtn = document.getElementById('nextBtn');
+         let currentIndex = 0;
+ 
+         function showTestimonial(index) {
+             testimonials.forEach((testimonial, i) => {
+                 testimonial.style.transform = `translateX(${(i - index) * 100}%)`;
+             });
+         }
+ 
+         prevBtn.addEventListener('click', () => {
+             currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonials.length - 1;
+             showTestimonial(currentIndex);
+         });
+ 
+         nextBtn.addEventListener('click', () => {
+             currentIndex = (currentIndex < testimonials.length - 1) ? currentIndex + 1 : 0;
+             showTestimonial(currentIndex);
+         });
+ 
+         showTestimonial(currentIndex);
+   </script>
+   <script>
+    function getRandomPosition(element) {
+             const x = Math.floor(Math.random() * (element.parentElement.clientWidth - element.clientWidth));
+             const y = Math.floor(Math.random() * (element.parentElement.clientHeight - element.clientHeight));
+             return { x, y };
+         }
+ 
+         function moveIcons() {
+             const icons = document.querySelectorAll('.icon-square');
+             icons.forEach(icon => {
+                 const { x, y } = getRandomPosition(icon);
+                 icon.style.transform = `translate(${x}px, ${y}px)`;
+             });
+         }
+ 
+         setInterval(moveIcons, 2000);
+         window.onload = moveIcons;
+   </script>
+    <script>
+        function getRandomPositionAroundElement(element, container) {
+                 const containerRect = container.getBoundingClientRect();
+                 const elementRect = element.getBoundingClientRect();
+                 const x = Math.random() * (containerRect.width - elementRect.width);
+                 const y = Math.random() * (containerRect.height - elementRect.height);
+                 return { x, y };
+             }
+     
+             function moveElementRandomlyAroundElement(element, container) {
+                 const { x, y } = getRandomPositionAroundElement(element, container);
+                 element.style.transform = `translate(${x}px, ${y}px)`;
+             }
+     
+             function startRandomMovementAroundElement() {
+                 const container = document.querySelector('.relative.bg-blue-100');
+                 const elements = document.querySelectorAll('.random-move');
+                 elements.forEach(element => {
+                     moveElementRandomlyAroundElement(element, container);
+                     setInterval(() => moveElementRandomlyAroundElement(element, container), 2000);
+                 });
+             }
+     
+             window.onload = startRandomMovementAroundElement;
+       </script>
+       <script>
+        function openModal() {
+                 document.getElementById('chatbotModal').classList.remove('hidden');
+             }
+     
+             function closeModal() {
+                 document.getElementById('chatbotModal').classList.add('hidden');
+             }
+       </script>
+ </body>
+</html>

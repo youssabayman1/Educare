@@ -1,0 +1,742 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Classroom with Comments and Commenter Avatar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    nav a {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #3B82F6; /* Tailwind blue-500 */
+      color: white !important;
+    }
+    #postText {
+      min-height: 80px;
+      border-radius: 20px;
+      padding: 0.75rem 3rem 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+      background-color: #e0e7ff;
+      resize: none;
+      outline: none;
+      width: 100%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-y: auto;
+      border: none;
+      overflow-wrap: break-word;
+    }
+    #postText:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 0;
+    }
+    .text-controls button {
+      color: #3b82f6;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      transition: background-color 0.2s;
+    }
+    .text-controls button:hover:not(:disabled) {
+      background-color: #e0e7ff;
+      cursor: pointer;
+    }
+    .text-controls button:disabled {
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+    .post-content[contenteditable="true"] {
+      outline: 2px solid #3b82f6;
+      outline-offset: 0;
+    }
+    .comment-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body class="bg-[#FBF9F9FF] min-h-screen flex justify-center items-start p-6">
+  <div
+class="bg-white rounded-[20px] w-full max-w-[1200px] p-8 flex flex-col md:flex-row gap-8">
+   <!-- Sidebar -->
+   <nav class="flex flex-row md:flex-col space-x-6 md:space-x-0 md:space-y-6 bg-white rounded-xl p-4 md:p-6 w-full md:w-48 shadow-[0_0_10px_#f0f2f5] min-h-[auto] md:min-h-[400px] overflow-x-auto md:overflow-visible">
+    <a href="./index.html" class="flex items-center space-x-2 text-[#0d8cf0] font-semibold text-sm hover:text-[#0b7cd9] transition-colors duration-200 whitespace-nowrap">
+     <i class="fas fa-list-ul text-lg">
+     </i>
+     <span>
+      Home
+     </span>
+    </a> 
+   <a href="../Pages/dash.html" class="flex items-center space-x-3 text-xs text-black font-normal hover:text-[#0d8cf0] hover:font-semibold transition-colors duration-200 whitespace-nowrap">
+     <img alt="Icon of a clipboard representing classrooms" class="w-5 h-5" height="20" src="../assets/Images/live-streaming.png" width="20"/>
+     <span>
+      classrooms
+     </span>
+    </a>
+    <a href="../Pages/favorites.html" class="flex items-center space-x-3 text-xs text-black font-normal hover:text-[#0d8cf0] hover:font-semibold transition-colors duration-200 whitespace-nowrap">
+     <img alt="Icon of a yellow star representing favorites" class="w-5 h-5" height="20" src="../assets/Images/star.png" width="20"/>
+     <span>
+      favorites
+     </span>
+    </a>
+    <a href="../Pages/archive.html" class="flex items-center space-x-3 text-xs text-black font-normal hover:text-[#0d8cf0] hover:font-semibold transition-colors duration-200 whitespace-nowrap">
+     <img alt="Icon of a school building representing archived classes" class="w-5 h-5" height="20" src="../assets/Images/archive.png" width="20"/>
+     <span>
+      archived classes
+     </span>
+    </a>
+    <a href="./store.html" class="flex items-center space-x-3 text-xs text-black font-normal hover:text-[#0d8cf0] hover:font-semibold transition-colors duration-200 whitespace-nowrap">
+     <img alt="Icon of an app store symbol representing store" class="w-5 h-5" height="20" src="../assets/Images/app-store.png" width="20"/>
+     <span>
+      store
+     </span>
+    </a>
+    <a href="./settings.html" class="flex items-center space-x-3 text-xs text-black font-normal hover:text-[#0d8cf0] hover:font-semibold transition-colors duration-200 whitespace-nowrap">
+     <img alt="Icon of a gear representing settings" class="w-5 h-5" height="20" src="../assets/Images/settings.png" width="20"/>
+     <span>
+      settings
+     </span>
+    </a> 
+   </nav>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col gap-8">
+      <!-- Top bar -->
+      <div
+        class="flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <form
+          aria-label="Search"
+          class="flex items-center bg-[#F3F4F6] rounded-lg px-6 py-3 w-full max-w-[400px]"
+          role="search"
+        >
+          <input
+            class="bg-transparent text-sm text-[#9CA3AF] placeholder-[#1857C3FF] focus:outline-none w-full"
+            placeholder="Search ..."
+            type="search"
+          />
+          <i class="fas fa-search text-[#9CA3AF] text-sm"></i>
+        </form>
+        <div class="flex items-center gap-6">
+          <img
+            alt="Profile avatar of Sarah Othman with short brown hair and blue shirt"
+            class="w-10 h-10 rounded-full object-cover"
+            height="40"
+            src="https://storage.googleapis.com/a1aa/image/22c46531-9512-4c0f-4521-5c7172eae9e1.jpg"
+            width="40"
+          />
+          <span class="text-sm font-semibold text-[#111827]">Sarah othman</span>
+        </div>
+      </div>
+      <!-- Navigation Tabs -->
+      <div>
+      <nav
+        class="flex gap-8 border border-[#FFFFFFFF] rounded-[20px] px-8 py-3 text-xs font-semibold text-[#6B7280] max-w-[700px]"
+      >
+      <nav class="flex gap-8 border border-[#E6E9F0] rounded-[20px] px-8 py-3 text-xs font-semibold text-[#6B7280] max-w-[700px]">
+        <a aria-current="page" class="text-[#3B82F6] border border-[#3B82F6] rounded-[20px] px-6 py-2 flex items-center justify-center" href="#" data-page="stream" style="">
+          Stream
+        </a>
+        <a class="text-[#3B82F6] border border-[#3B82F6] rounded-[20px] px-6 py-2 flex items-center justify-center" href="#" data-page="classwork" style="">
+          Classwork
+        </a>
+        <a class="text-[#3B82F6] border border-[#3B82F6] rounded-[20px] px-6 py-2 flex items-center justify-center" href="#" data-page="people">
+          People
+        </a>
+        <a class="text-[#3B82F6] border border-[#3B82F6] rounded-[20px] px-6 py-2 flex items-center justify-center" href="#" data-page="messages">
+          Messages
+        </a>
+        <a class="text-[#3B82F6] border border-[#3B82F6] rounded-[20px] px-6 py-2 flex items-center justify-center" href="#" data-page="calendar">
+          Calendar
+        </a>
+        <button aria-label="Settings" class="ml-auto text-[#3B82F6] hover:text-[#2563EB]" id="settingsBtn" type="button">
+          <i class="fas fa-cog text-xl"></i>
+        </button>
+      </nav>
+</nav>
+      </div>
+      <!-- Text Controls -->
+      <div
+        class="max-w-[800px] mx-auto mb-2 flex gap-3 text-[#3B82F6] text-lg select-none text-controls"
+        style=""
+      >
+        <button type="button" aria-label="Bold" id="btnBold" title="Bold" style="">
+          <i class="fas fa-bold"></i>
+        </button>
+        <button type="button" aria-label="Italic" id="btnItalic" title="Italic" style="">
+          <i class="fas fa-italic"></i>
+        </button>
+        <button type="button" aria-label="Underline" id="btnUnderline" title="Underline" style="">
+          <i class="fas fa-underline"></i>
+        </button>
+        <button type="button" aria-label="Ordered List" id="btnOrderedList" title="Ordered List">
+          <i class="fas fa-list-ol"></i>
+        </button>
+        <button type="button" aria-label="Unordered List" id="btnUnorderedList" title="Unordered List">
+          <i class="fas fa-list-ul"></i>
+        </button>
+      </div>
+
+      <!-- Post input area -->
+      <section
+        class="bg-[#F3F4F6] rounded-[20px] p-6 flex flex-col gap-2 max-w-[800px] relative"
+      >
+        <div class="flex items-start gap-4 relative w-full">
+          <img
+            alt="Profile avatar of Sarah Othman with short brown hair and blue shirt"
+            class="w-10 h-10 rounded-full object-cover mt-1"
+            height="40"
+            src="https://storage.googleapis.com/a1aa/image/22c46531-9512-4c0f-4521-5c7172eae9e1.jpg"
+            width="40"
+          />
+          <div
+            id="postText"
+            contenteditable="true"
+            role="textbox"
+            aria-multiline="true"
+            spellcheck="true"
+            class="flex-1 bg-[#E0E7FF] rounded-[20px] py-3 px-6 text-sm text-[#6B7280] focus:outline-none resize-none min-h-[80px] overflow-y-auto"
+            placeholder="What's happening at your class?"
+          ></div>
+          <button
+            id="postButton"
+            type="button"
+            disabled
+            aria-label="Post"
+            class="absolute right-6 top-1/2 -translate-y-1/2 text-[#3B82F6] hover:text-[#2563EB] disabled:text-[#9CA3AF] disabled:cursor-not-allowed"
+            title="Post"
+          >
+            <i class="fas fa-paper-plane fa-lg"></i>
+          </button>
+        </div>
+        <div class="flex gap-6 mt-3 justify-center">
+          <button id="photoVideoBtn" type="button" class="flex items-center gap-3 bg-white border border-[#3B82F6] rounded-[20px] px-6 py-2 text-sm text-[#3B82F6] font-semibold">
+            <i class="fas fa-image"></i> photo/video
+          </button>
+          <button id="uploadFileBtn" type="button" class="flex items-center gap-3 bg-white border border-[#3B82F6] rounded-[20px] px-6 py-2 text-sm text-[#3B82F6] font-semibold">
+            <i class="fas fa-upload"></i> upload file
+          </button>
+          <button class="flex items-center gap-3 bg-white border border-[#3B82F6] rounded-[20px] px-6 py-2 text-sm text-[#3B82F6] font-semibold" id="eventButton" type="button">
+            <i class="fas fa-calendar-alt">
+            </i>
+            Event
+           </button>
+        </div>
+        <!-- Hidden inputs -->
+        <input accept="image/*,video/*" class="hidden" id="photoVideoInput" type="file" multiple />
+        <input accept=".doc,.docx,.pdf,.ppt,.pptx,.xls,.xlsx" class="hidden" id="fileInput" type="file" />
+        <input accept="video/*" class="hidden" id="videoInput" type="file" />
+        <div class="media-preview max-w-[800px] mx-auto mt-4"></div>
+      </section>
+
+      <!-- Posts -->
+      <section class="flex flex-col gap-8 max-w-[800px]" id="postsContainer">
+        <!-- Existing posts -->
+      </section>
+    </main>
+     <!-- Right Sidebar -->
+   <aside class="flex flex-col gap-4 w-full md:w-[220px]">
+    <section class="border border-gray-200 rounded-2xl p-4 text-center text-xs text-gray-400 font-semibold">
+     <p>
+      No upcoming events
+     </p>
+     <button class="mt-3 bg-gray-200 text-gray-600 rounded-full px-4 py-1 text-xs font-semibold">
+      view all events
+     </button>
+     <button class="mt-2 text-sky-500 text-xs font-semibold hover:underline" type="button">
+      Create Event
+     </button>
+    </section>
+    <section class="border border-gray-200 rounded-2xl p-4 text-center text-xs text-sky-500 font-semibold">
+     <div class="border border-sky-300 rounded-lg p-3 mb-3 cursor-pointer select-none">
+      <div class="flex justify-between items-center">
+       <span>
+        Class code
+       </span>
+       <button aria-label="Copy class code" class="text-sky-500">
+        <i class="fas fa-copy">
+        </i>
+       </button>
+      </div>
+      <p class="text-sky-600 font-semibold mt-1">
+       2svw280
+      </p>
+     </div>
+     <div class="bg-sky-50 rounded-lg p-4 text-center text-sky-600 font-semibold">
+      <p class="text-xs">
+       Insights &amp; Ranking
+      </p>
+      <p class="text-3xl font-bold mt-1">
+       Rating
+      </p>
+      <p class="text-4xl font-extrabold mt-1">
+       A
+      </p>
+      <p class="text-yellow-400 mt-1">
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+      </p>
+     </div>
+    </section>
+   </aside>
+  </div>
+
+  <!-- Comment Modal -->
+  <div
+    id="commentModal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50"
+    aria-modal="true"
+    role="dialog"
+    aria-labelledby="commentModalTitle"
+  >
+    <div class="bg-white rounded-lg p-6 w-full max-w-md relative">
+      <h2 id="commentModalTitle" class="text-lg font-semibold mb-4 text-[#111827]">
+        Add Comment
+      </h2>
+      <textarea
+        id="commentText"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3B82F6] resize-none"
+        placeholder="Write your comment..."
+        rows="4"
+      ></textarea>
+      <div class="flex justify-end mt-6 gap-4">
+        <button
+          id="postCommentBtn"
+          class="px-4 py-2 rounded-md bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB]"
+          type="button"
+        >
+          Post Comment
+        </button>
+        <button
+          id="closeCommentModalBtn"
+          class="px-4 py-2 rounded-md bg-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-400"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for creating new event -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden" id="eventModal">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+     <h2 class="text-lg font-semibold mb-4 text-[#111827]">Create New Event</h2>
+     <form id="eventForm" class="flex flex-col gap-4">
+      <label class="text-xs font-semibold text-[#374151]" for="eventTitle">Event Title</label>
+      <input class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" id="eventTitle" name="eventTitle" required="" type="text"/>
+      <label class="text-xs font-semibold text-[#374151]" for="eventDate">Date</label>
+      <input class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" id="eventDate" name="eventDate" required="" type="date"/>
+      <label class="text-xs font-semibold text-[#374151]" for="eventTime">Time</label>
+      <input class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" id="eventTime" name="eventTime" required="" type="time"/>
+      <div class="flex justify-end gap-4 mt-4">
+       <button class="px-4 py-2 rounded-md bg-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-400" id="cancelEventBtn" type="button">
+        Cancel
+       </button>
+       <button class="px-4 py-2 rounded-md bg-[#3B82F6] text-white text-sm font-semibold hover:bg-[#2563EB]" type="submit">
+        Add Event
+       </button>
+      </div>
+     </form>
+    </div>
+   </div>
+
+  <script>
+    const postText = document.getElementById("postText");
+    const postButton = document.getElementById("postButton");
+    const postsContainer = document.getElementById("postsContainer");
+    const mediaPreview = document.querySelector(".media-preview");
+
+    // Text control buttons
+    const btnBold = document.getElementById("btnBold");
+    const btnItalic = document.getElementById("btnItalic");
+    const btnUnderline = document.getElementById("btnUnderline");
+    const btnOrderedList = document.getElementById("btnOrderedList");
+    const btnUnorderedList = document.getElementById("btnUnorderedList");
+
+    // Media buttons and inputs
+    const photoVideoBtn = document.getElementById("photoVideoBtn");
+    const uploadFileBtn = document.getElementById("uploadFileBtn");
+    const addVideoBtn = document.getElementById("addVideoBtn");
+    const photoVideoInput = document.getElementById("photoVideoInput");
+    const fileInput = document.getElementById("fileInput");
+    const videoInput = document.getElementById("videoInput");
+
+    // Comment modal elements
+    const commentModal = document.getElementById("commentModal");
+    const commentText = document.getElementById("commentText");
+    const postCommentBtn = document.getElementById("postCommentBtn");
+    const closeCommentModalBtn = document.getElementById("closeCommentModalBtn");
+
+    let currentCommentPost = null;
+
+    // Store selected media files for posting
+    let selectedMediaFiles = [];
+
+    // Enable post button if contenteditable has content (text or html) or media selected
+    function checkPostButton() {
+      const text = postText.innerText.trim();
+      postButton.disabled = text === "" && selectedMediaFiles.length === 0;
+    }
+    postText.addEventListener("input", checkPostButton);
+
+    // Text formatting functions using document.execCommand
+    function execCommand(command) {
+      postText.focus();
+      document.execCommand(command, false, null);
+    }
+
+    btnBold.addEventListener("click", () => execCommand("bold"));
+    btnItalic.addEventListener("click", () => execCommand("italic"));
+    btnUnderline.addEventListener("click", () => execCommand("underline"));
+    btnOrderedList.addEventListener("click", () => execCommand("insertOrderedList"));
+    btnUnorderedList.addEventListener("click", () => execCommand("insertUnorderedList"));
+
+    // Media buttons triggers
+    photoVideoBtn.addEventListener("click", () => photoVideoInput.click());
+    uploadFileBtn.addEventListener("click", () => fileInput.click());
+    addVideoBtn.addEventListener("click", () => videoInput.click());
+
+    // Helper to create preview elements
+    function createPreviewElement(file) {
+      if (file.type.startsWith("image/")) {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        img.alt = file.name;
+        img.className = "rounded max-w-full max-h-48";
+        return img;
+      } else if (file.type.startsWith("video/")) {
+        const video = document.createElement("video");
+        video.src = URL.createObjectURL(file);
+        video.controls = true;
+        video.className = "rounded max-w-full max-h-48";
+        return video;
+      } else {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContent = file.name;
+        link.className = "underline text-blue-600 block my-2";
+        return link;
+      }
+    }
+      // Upload file button triggers hidden file input
+      uploadFileBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+    // Clear previews
+    function clearPreviews() {
+      mediaPreview.innerHTML = "";
+      selectedMediaFiles.forEach((file) => {
+        if (file.previewUrl) URL.revokeObjectURL(file.previewUrl);
+      });
+      selectedMediaFiles = [];
+    }
+
+    // Handle photo/video input change
+    photoVideoInput.addEventListener("change", () => {
+      clearPreviews();
+      if (photoVideoInput.files.length === 0) return;
+      selectedMediaFiles = Array.from(photoVideoInput.files).map((file) => {
+        file.previewUrl = URL.createObjectURL(file);
+        return file;
+      });
+      selectedMediaFiles.forEach((file) => {
+        const preview = createPreviewElement(file);
+        mediaPreview.appendChild(preview);
+      });
+      photoVideoInput.value = "";
+      checkPostButton();
+    });
+
+    // Handle file input change
+    fileInput.addEventListener("change", () => {
+      clearPreviews();
+      if (fileInput.files.length === 0) return;
+      selectedMediaFiles = Array.from(fileInput.files).map((file) => {
+        file.previewUrl = URL.createObjectURL(file);
+        return file;
+      });
+      selectedMediaFiles.forEach((file) => {
+        const preview = createPreviewElement(file);
+        mediaPreview.appendChild(preview);
+      });
+      fileInput.value = "";
+      checkPostButton();
+    });
+
+    // Handle video input change
+    videoInput.addEventListener("change", () => {
+      clearPreviews();
+      if (videoInput.files.length === 0) return;
+      selectedMediaFiles = Array.from(videoInput.files).map((file) => {
+        file.previewUrl = URL.createObjectURL(file);
+        return file;
+      });
+      selectedMediaFiles.forEach((file) => {
+        const preview = createPreviewElement(file);
+        mediaPreview.appendChild(preview);
+      });
+      videoInput.value = "";
+      checkPostButton();
+    });
+
+    // Post button click
+    postButton.addEventListener("click", () => {
+      const htmlContent = postText.innerHTML.trim();
+      if (htmlContent === "" && selectedMediaFiles.length === 0) return;
+
+      // Create new post article
+      const postArticle = createTextPost(htmlContent, selectedMediaFiles);
+
+      // Add new post at the top
+      postsContainer.insertBefore(postArticle, postsContainer.firstChild);
+
+      // Clear input and disable post button
+      postText.innerHTML = "";
+      clearPreviews();
+      checkPostButton();
+    });
+
+    // Create post helper with media
+    function createTextPost(htmlContent, mediaFiles) {
+      const postArticle = document.createElement("article");
+      postArticle.className =
+        "bg-white border border-[#E6E9F0] rounded-[20px] p-6 flex flex-col gap-4";
+
+      const headerDiv = document.createElement("div");
+      headerDiv.className = "flex items-center gap-4";
+
+      const avatarImg = document.createElement("img");
+      avatarImg.src =
+        "https://storage.googleapis.com/a1aa/image/22c46531-9512-4c0f-4521-5c7172eae9e1.jpg";
+      avatarImg.alt =
+        "Profile avatar of Sarah Othman with short brown hair and blue shirt";
+      avatarImg.className = "w-10 h-10 rounded-full object-cover";
+      avatarImg.height = 40;
+      avatarImg.width = 40;
+
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "text-sm font-semibold text-[#111827]";
+      nameSpan.textContent = "Sarah othman";
+
+      headerDiv.appendChild(avatarImg);
+      headerDiv.appendChild(nameSpan);
+
+      const contentDiv = document.createElement("div");
+      contentDiv.className = "text-xs text-[#6B7280] whitespace-pre-wrap";
+      contentDiv.innerHTML = htmlContent;
+
+      postArticle.appendChild(headerDiv);
+      postArticle.appendChild(contentDiv);
+
+      // Add media previews if any
+      if (mediaFiles && mediaFiles.length > 0) {
+        const mediaContainer = document.createElement("div");
+        mediaContainer.className = "flex flex-col gap-4 max-w-full overflow-auto";
+
+        mediaFiles.forEach((file) => {
+          if (file.type.startsWith("image/")) {
+            const img = document.createElement("img");
+            img.src = file.previewUrl;
+            img.alt = file.name;
+            img.className = "max-h-60 rounded";
+            mediaContainer.appendChild(img);
+          } else if (file.type.startsWith("video/")) {
+            const video = document.createElement("video");
+            video.src = file.previewUrl;
+            video.controls = true;
+            video.className = "max-h-60 rounded";
+            mediaContainer.appendChild(video);
+          } else {
+            const link = document.createElement("a");
+            link.href = "#";
+            link.textContent = file.name;
+            link.className = "underline text-blue-600 block my-2";
+            mediaContainer.appendChild(link);
+          }
+        });
+
+        postArticle.appendChild(mediaContainer);
+      }
+
+      const footerDiv = createPostFooter(postArticle);
+
+      postArticle.appendChild(footerDiv);
+
+      return postArticle;
+    }
+
+    function createPostFooter(postArticle) {
+      const footerDiv = document.createElement("div");
+      footerDiv.className = "flex justify-end items-center gap-6";
+
+      const commentBtn = document.createElement("button");
+      commentBtn.className =
+        "flex items-center gap-2 text-[#3B82F6] text-xs font-semibold comment-btn";
+      commentBtn.type = "button";
+      commentBtn.innerHTML = '<i class="fas fa-comment"></i> Comment';
+
+      const viewsBtn = document.createElement("button");
+      viewsBtn.className = "flex items-center gap-2 text-[#3B82F6] text-xs font-semibold";
+      viewsBtn.type = "button";
+      viewsBtn.innerHTML = '<i class="far fa-eye"></i> 0 views';
+
+      const moreDiv = document.createElement("div");
+      moreDiv.className = "relative group";
+
+      const moreBtn = document.createElement("button");
+      moreBtn.className =
+        "text-[#3B82F6] text-xs font-semibold px-3 py-2 rounded hover:bg-[#E0E7FF]";
+      moreBtn.type = "button";
+      moreBtn.setAttribute("aria-haspopup", "true");
+      moreBtn.setAttribute("aria-expanded", "false");
+      moreBtn.setAttribute("aria-label", "More options");
+      moreBtn.innerHTML = '<i class="fas fa-ellipsis-h"></i>';
+
+      const dropdownDiv = document.createElement("div");
+      dropdownDiv.className =
+        "hidden group-hover:block absolute right-0 top-full mt-2 bg-white border border-[#E6E9F0] rounded-lg shadow-lg w-24 text-xs text-[#3B82F6] font-semibold";
+
+      const editBtn = document.createElement("button");
+      editBtn.className = "block w-full text-left px-4 py-2 hover:bg-[#E0E7FF]";
+      editBtn.type = "button";
+      editBtn.textContent = "Edit";
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "block w-full text-left px-4 py-2 hover:bg-[#E0E7FF]";
+      deleteBtn.type = "button";
+      deleteBtn.textContent = "Delete";
+
+      dropdownDiv.appendChild(editBtn);
+      dropdownDiv.appendChild(deleteBtn);
+
+      moreDiv.appendChild(moreBtn);
+      moreDiv.appendChild(dropdownDiv);
+
+      footerDiv.appendChild(commentBtn);
+      footerDiv.appendChild(viewsBtn);
+      footerDiv.appendChild(moreDiv);
+
+      // Toggle dropdown on moreBtn click
+      moreBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isVisible = dropdownDiv.style.display === "block";
+        // Close all other dropdowns
+        document.querySelectorAll(".dropdown-menu-visible").forEach((el) => {
+          el.style.display = "none";
+          el.classList.remove("dropdown-menu-visible");
+        });
+        if (!isVisible) {
+          dropdownDiv.style.display = "block";
+          dropdownDiv.classList.add("dropdown-menu-visible");
+        }
+      });
+
+      // Close dropdown if clicking outside
+      document.addEventListener("click", () => {
+        if (dropdownDiv.style.display === "block") {
+          dropdownDiv.style.display = "none";
+          dropdownDiv.classList.remove("dropdown-menu-visible");
+        }
+      });
+
+      // Edit functionality
+      editBtn.addEventListener("click", () => {
+        dropdownDiv.style.display = "none";
+        const contentDiv = postArticle.querySelector("div:nth-child(2)");
+        if (contentDiv.isContentEditable) {
+          // Save edit
+          contentDiv.contentEditable = "false";
+          editBtn.textContent = "Edit";
+          contentDiv.classList.remove("post-content");
+        } else {
+          // Enable edit
+          contentDiv.contentEditable = "true";
+          contentDiv.focus();
+          editBtn.textContent = "Save";
+          contentDiv.classList.add("post-content");
+        }
+      });
+
+      // Delete functionality
+      deleteBtn.addEventListener("click", () => {
+        postArticle.remove();
+      });
+
+      // Comment functionality
+      commentBtn.addEventListener("click", () => {
+        currentCommentPost = postArticle;
+        commentText.value = "";
+        commentModal.classList.remove("hidden");
+      });
+
+      return footerDiv;
+    }
+
+    // Close comment modal
+    closeCommentModalBtn.addEventListener("click", () => {
+      commentModal.classList.add("hidden");
+      currentCommentPost = null;
+    });
+
+    // Post comment
+    postCommentBtn.addEventListener("click", () => {
+      if (!currentCommentPost) return;
+      const comment = commentText.value.trim();
+      if (comment === "") return;
+
+      // Create comment element with profile picture on left
+      const commentDiv = document.createElement("div");
+      commentDiv.className = "mt-2 flex items-start gap-3 ml-12";
+
+      const commenterImg = document.createElement("img");
+      commenterImg.src = "https://storage.googleapis.com/a1aa/image/22c46531-9512-4c0f-4521-5c7172eae9e1.jpg";
+      commenterImg.alt = "Commenter profile picture";
+      commenterImg.className = "w-6 h-6 rounded-full object-cover mt-1 flex-shrink-0";
+
+      const commentTextDiv = document.createElement("div");
+      commentTextDiv.className = "p-2 bg-gray-100 rounded text-xs text-gray-700 flex-1";
+      commentTextDiv.textContent = comment;
+
+      commentDiv.appendChild(commenterImg);
+      commentDiv.appendChild(commentTextDiv);
+
+      // Append comment to post (create comments container if not exists)
+      let commentsContainer = currentCommentPost.querySelector(".comments-container");
+      if (!commentsContainer) {
+        commentsContainer = document.createElement("div");
+        commentsContainer.className = "comments-container mt-4 border-t border-gray-200 pt-2";
+        currentCommentPost.appendChild(commentsContainer);
+      }
+      commentsContainer.appendChild(commentDiv);
+
+      commentModal.classList.add("hidden");
+      currentCommentPost = null;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Assessment Submission and Review
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   /* Hide default file input */
+   input[type="file"] {
+    display: none;
+   }
+  </style>
+ </head>
+ <body class="bg-[#f9f9f9] font-sans text-[10px] text-[#a3a3a3]">
+  <main class="min-h-screen flex flex-col sm:flex-row gap-6 p-6 max-w-[1000px] mx-auto">
+   <!-- Left: submission of assessments - student -->
+   <section class="flex-1 bg-[#f9f9f9]">
+    <h2 class="text-[#b3b3b3] mb-2 select-none">
+     submission of assessments -student
+    </h2>
+    <div class="border border-[#d9e6f2] rounded-md bg-white p-4 max-w-[360px]">
+     <div class="flex items-center gap-2 mb-3">
+      <div class="w-5 h-5 rounded-full bg-[#2a6edb] flex items-center justify-center text-white text-xs">
+       <i class="fas fa-bars">
+       </i>
+      </div>
+      <span id="student-assessment-name" class="text-[11px] text-[#4a4a4a] font-normal">
+       Loading assessment...
+      </span>
+     </div>
+     <p class="text-[9px] text-[#7a7a7a] mb-0.5">
+      100 points
+     </p>
+     <p class="text-[8px] text-[#7a7a7a] mb-1.5">
+      Dr. Marwa Elbetagy,12:18 AM
+     </p>
+     <a class="text-[8px] text-[#2a6edb] font-semibold mb-4 inline-block" href="#">
+      Add class comment or feedback
+     </a>
+     <div class="border border-[#d9e6f2] rounded-md p-3 text-[9px] text-[#4a4a4a] bg-[#f9f9f9]">
+      <div class="flex justify-between items-center mb-2">
+       <span>
+        Your work
+       </span>
+       <span class="text-[8px] font-semibold text-[#2a6edb]">
+        Assigned
+       </span>
+      </div>
+      <ul id="file-list" class="space-y-2 mb-3 min-h-[72px]">
+       <!-- Files will be appended here -->
+      </ul>
+      <label for="file-upload" class="flex items-center justify-center gap-1 w-full text-[#2a6edb] text-[9px] font-semibold border border-[#d9e6f2] rounded-md py-1 mb-2 cursor-pointer hover:bg-[#e6f0ff]">
+       <i class="fas fa-plus-circle">
+       </i>
+       Add or create
+      </label>
+      <input id="file-upload" multiple="" type="file" accept="image/*,.pdf"/>
+      <button id="turn-in-btn" class="w-full bg-[#2a6edb] text-white text-[9px] font-semibold rounded-md py-1 hover:bg-[#1a4dbb]" type="button" disabled>
+       Turn in
+      </button>
+     </div>
+    </div>
+   </section>
+   
+  </main>
+  <script>
+   // Simulate fetching assessment name from classwork page or API
+   const assessmentName = "Midterm Exam - Algebra";
+
+   // Set assessment name dynamically in both places
+   document.getElementById("student-assessment-name").textContent = assessmentName;
+   document.getElementById("teacher-assessment-name").textContent = assessmentName;
+
+   const fileUploadInput = document.getElementById("file-upload");
+   const fileList = document.getElementById("file-list");
+   const turnInBtn = document.getElementById("turn-in-btn");
+
+   // Store files in an array to manage them
+   let attachedFiles = [];
+
+   function createFileItem(file, index) {
+    // Determine icon and label based on file type
+    let iconSrc = "";
+    let altText = "";
+    let label = file.name;
+
+    if (file.type.startsWith("image/")) {
+     iconSrc = "https://storage.googleapis.com/a1aa/image/cf5dced7-8010-476d-fd85-a505d8e31a85.jpg";
+     altText = "Blue square icon with letter I representing an image file";
+    } else if (file.type === "application/pdf") {
+     iconSrc = "https://storage.googleapis.com/a1aa/image/1af4fb90-3cc5-46a3-d1f7-08f9d0da8807.jpg";
+     altText = "Blue square icon with letters PDF representing a PDF file";
+    } else {
+     // generic file icon fallback
+     iconSrc = "https://placehold.co/20x20?text=F&bg=2a6edb&fg=fff";
+     altText = "Blue square icon representing a file";
+    }
+
+    const li = document.createElement("li");
+    li.className = "flex items-center justify-between border border-[#d9e6f2] rounded-md p-2 bg-white";
+
+    const leftDiv = document.createElement("div");
+    leftDiv.className = "flex items-center gap-2";
+
+    const img = document.createElement("img");
+    img.src = iconSrc;
+    img.alt = altText;
+    img.className = "w-5 h-5 rounded";
+    img.width = 20;
+    img.height = 20;
+
+    const span = document.createElement("span");
+    span.className = "text-[9px] text-[#4a4a4a] truncate max-w-[200px]";
+    span.title = label;
+    span.textContent = label;
+
+    leftDiv.appendChild(img);
+    leftDiv.appendChild(span);
+
+    const removeBtn = document.createElement("button");
+    removeBtn.className = "text-[#2a6edb] text-xs font-semibold hover:text-[#1a4dbb]";
+    removeBtn.type = "button";
+    removeBtn.setAttribute("aria-label", `Remove file ${label}`);
+    removeBtn.textContent = "×";
+    removeBtn.onclick = () => {
+     attachedFiles.splice(index, 1);
+     renderFileList();
+    };
+
+    li.appendChild(leftDiv);
+    li.appendChild(removeBtn);
+
+    return li;
+   }
+
+   function renderFileList() {
+    fileList.innerHTML = "";
+    if (attachedFiles.length === 0) {
+     // Show empty space or message
+     fileList.innerHTML = '<li class="text-[8px] text-[#7a7a7a] italic">No files attached</li>';
+     turnInBtn.disabled = true;
+    } else {
+     attachedFiles.forEach((file, idx) => {
+      fileList.appendChild(createFileItem(file, idx));
+     });
+     turnInBtn.disabled = false;
+    }
+   }
+
+   fileUploadInput.addEventListener("change", (e) => {
+    const files = Array.from(e.target.files);
+    // Append new files to attachedFiles, avoid duplicates by name+size
+    files.forEach((file) => {
+     if (!attachedFiles.some(f => f.name === file.name && f.size === file.size)) {
+      attachedFiles.push(file);
+     }
+    });
+    renderFileList();
+    // Reset input so same file can be re-added if removed
+    fileUploadInput.value = "";
+   });
+
+   turnInBtn.addEventListener("click", () => {
+    if (attachedFiles.length === 0) return;
+    // Simulate submission process
+    alert(`You have turned in ${attachedFiles.length} file(s) for "${assessmentName}".`);
+    // Clear files after submission
+    attachedFiles = [];
+    renderFileList();
+    turnInBtn.disabled = true;
+   });
+
+   // Initial render
+   renderFileList();
+  </script>
+ </body>
+</html>

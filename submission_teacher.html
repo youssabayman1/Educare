@@ -1,0 +1,73 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Assessment Submission and Review
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   /* Hide default file input */
+   input[type="file"] {
+    display: none;
+   }
+  </style>
+ </head>
+ <body class="bg-[#f9f9f9] font-sans text-[10px] text-[#a3a3a3]">
+  <main class="min-h-screen flex flex-col sm:flex-row gap-6 p-6 max-w-[1000px] mx-auto">
+<!-- Right: resieved submissions-teacher -->
+<section class="flex-1 bg-[#f9f9f9]">
+    <h2 class="text-[#b3b3b3] mb-2 select-none">
+     resieved submissions-teacher
+    </h2>
+    <div class="border border-[#d9e6f2] rounded-md bg-white p-4 max-w-[360px]">
+     <div class="flex items-center gap-2 mb-3">
+      <div class="w-5 h-5 rounded-full bg-[#2a6edb] flex items-center justify-center text-white text-xs">
+       <i class="fas fa-undo-alt">
+       </i>
+      </div>
+      <span id="teacher-assessment-name" class="text-[11px] text-[#4a4a4a] font-normal">
+       Loading assessment...
+      </span>
+     </div>
+     <div class="text-[8px] text-[#4a4a4a] mb-3">
+      <div class="flex justify-between mb-2">
+       <span>
+        Sarah othman
+       </span>
+       <span class="font-semibold text-[#2a6edb]">
+        Handed in
+       </span>
+      </div>
+      <ul class="space-y-2 mb-3">
+       <li class="flex items-center justify-between border border-[#d9e6f2] rounded-md p-2 bg-white">
+        <div class="flex items-center gap-2">
+         <img alt="Blue square icon with letter I representing an image file" class="w-5 h-5 rounded" height="20" src="https://storage.googleapis.com/a1aa/image/cf5dced7-8010-476d-fd85-a505d8e31a85.jpg" width="20"/>
+         <span class="text-[9px] text-[#4a4a4a]">
+          image
+         </span>
+        </div>
+       </li>
+       <li class="flex items-center justify-between border border-[#d9e6f2] rounded-md p-2 bg-white">
+        <div class="flex items-center gap-2">
+         <img alt="Blue square icon with letters PDF representing a PDF file" class="w-5 h-5 rounded" height="20" src="https://storage.googleapis.com/a1aa/image/1af4fb90-3cc5-46a3-d1f7-08f9d0da8807.jpg" width="20"/>
+         <span class="text-[9px] text-[#4a4a4a]">
+          PDF
+         </span>
+        </div>
+       </li>
+      </ul>
+      <div class="flex gap-3">
+       <input class="flex-1 bg-[#d9e6f2] rounded-md text-[8px] text-[#4a4a4a] px-2 py-1 cursor-not-allowed" disabled="" placeholder="Mark/100" type="text"/>
+       <button class="bg-[#2a6edb] text-white text-[9px] font-semibold rounded-md px-4 py-1 hover:bg-[#1a4dbb]" type="button">
+        Return
+       </button>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+ </body>
+</html>

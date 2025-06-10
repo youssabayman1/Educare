@@ -1,0 +1,114 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Login
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+  </style>
+ </head>
+ <body>
+  <div class="w-full max-w-lg bg-white rounded-lg shadow-lg p-10">
+   <h1 class="text-center font-semibold text-4xl text-gray-900 mb-12">
+    Login
+   </h1>
+   <form id="loginForm" novalidate="">
+    <label class="block mb-3 text-sm font-medium text-gray-700" for="email">
+     Email address
+    </label>
+    <input class="w-full mb-8 px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" id="email" name="email" placeholder="Enter your email" required="" type="email"/>
+    <label class="block mb-3 text-sm font-medium text-gray-700" for="password">
+     Password
+    </label>
+    <input class="w-full mb-6 px-5 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" id="password" name="password" placeholder="Password" required="" type="password"/>
+    <div class="mb-10 flex items-center">
+     <input class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" id="remember" name="remember" type="checkbox"/>
+     <label class="ml-3 block text-sm text-gray-700 select-none" for="remember">
+      Remember me
+     </label>
+    </div>
+    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-lg shadow-md transition-colors duration-200" type="submit">
+     Login
+    </button>
+   </form>
+   <hr class="my-12 border-gray-300"/>
+   <div class="text-center text-gray-700 text-base">
+    <p>
+     Don't have an account?
+     <a class="text-blue-600 font-semibold underline hover:text-blue-800 transition-colors duration-200" href="./signup.html">
+      Sign up
+     </a>
+    </p>
+    <p class="mt-10 mb-6 text-gray-600">
+     Or login with:
+    </p>
+    <button class="inline-flex items-center justify-center gap-3 px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 shadow-sm mx-auto" type="button">
+     <img alt="Google logo placeholder, a stylized G letter in multicolor" class="w-5 h-5" height="20" src="https://storage.googleapis.com/a1aa/image/badcfe90-9719-4ce9-ec9a-0ea52b648f2b.jpg" width="20"/>
+     Continue with Google
+    </button>
+   </div>
+  </div>
+  <script>
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+
+   document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      function validateEmail(email) {
+      // Simple email regex for validation
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let valid = true;
+
+      // Validate email
+      if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+        emailError.classList.remove('hidden');
+        emailInput.classList.add('border-red-600', 'focus:ring-red-600', 'focus:border-red-600');
+        valid = false;
+      } else {
+        emailError.classList.add('hidden');
+        emailInput.classList.remove('border-red-600', 'focus:ring-red-600', 'focus:border-red-600');
+      }
+
+      // Validate password
+      if (!passwordInput.value || passwordInput.value.length < 6) {
+        passwordError.classList.remove('hidden');
+        passwordInput.classList.add('border-red-600', 'focus:ring-red-600', 'focus:border-red-600');
+        valid = false;
+      } else {
+        passwordError.classList.add('hidden');
+        passwordInput.classList.remove('border-red-600', 'focus:ring-red-600', 'focus:border-red-600');
+      }
+
+      if (valid) {
+        // Redirect to dashboard if valid
+        window.location.href = 'dash.html';
+      }
+    });
+      
+    });
+  </script>
+ </body>
+</html>
